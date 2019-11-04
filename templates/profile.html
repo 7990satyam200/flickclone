@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'mycss.css' %}" />
+{% endblock %}
+
+
+{% block body %}
+
+
+
+{% if user.is_authenticated %}
+<div id="openweathermap-widget-12"></div>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 12,cityid: '7279746',appid: '6d941a5269937c8d2ba307b3a65213fd',units: 'metric',containerid: 'openweathermap-widget-12',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+<div class ="profile-info">
+   Welcome {{ user.username }}
+   <li>Location: {{ user }}</li>
+   {{ request.user.get_profile.bio }}.
+  <li> {{ user.location }}.</li>
+
+{{user.email}}
+  <p>You last logged in on Tuesday the 19th of March, 2013 at 01:32pm.</p>
+  <p align="center"><a href="#">Profile</a> | <a href="#">Logout</a></p>
+{% else %}
+............
+{% endif %}
+{{object}}
+
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						Marcus Doe
+					</div>
+					<div class="profile-usertitle-job">
+						Developer
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+							<i class="glyphicon glyphicon-ok"></i>
+							Tasks </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+			   Some user related content goes here...
+            </div>
+		</div>
+	</div>
+</div>
+<center>
+<strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
+</center>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <div class="page-header"  ></div>
+     <div class="main main-raised">
+       <div class="profile-content">
+         <div class="container">
+           <div class="row">
+             <div class="col-md-6 ml-auto mr-auto">
+               <div class="profile">
+                 <div class="avatar">
+                   <img src="{% static 'assets/img/faces/christian.jpg' %}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                 </div>
+                 <div class="name">
+                   <h3 class="title">Christian Louboutin</h3>
+                   <h6>Designer</h6>
+                   <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                   <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                   <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="description text-center">
+             <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+           </div>
+           <div class="row">
+             <div class="col-md-6 ml-auto mr-auto">
+               <div class="profile-tabs">
+                 <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                   <li class="nav-item">
+                     <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                       <i class="material-icons">camera</i> Studio
+                     </a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                       <i class="material-icons">palette</i> Work
+                     </a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                       <i class="material-icons">favorite</i> Favorite
+                     </a>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+           <div class="tab-content tab-space">
+             <div class="tab-pane active text-center gallery" id="studio">
+               <div class="row">
+                 <div class="col-md-3 ml-auto">
+                   <img src="{% static 'assets/img/examples/studio-1.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/studio-2.jpg' %}" class="rounded">
+                 </div>
+                 <div class="col-md-3 mr-auto">
+                   <img src="{% static 'assets/img/examples/studio-3.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/studio-4.jpg' %}" class="rounded">
+                 </div>
+               </div>
+             </div>
+             <div class="tab-pane text-center gallery" id="works">
+               <div class="row">
+                 <div class="col-md-3 ml-auto">
+                   <img src="{% static 'assets/img/examples/olu-eletu.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/clem-onojeghuo.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/cynthia-del-rio.jpg' %}" class="rounded">
+                 </div>
+                 <div class="col-md-3 mr-auto">
+                   <img src="{% static 'assets/img/examples/mariya-georgieva.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/clem-onojegaw.jpg' %}" class="rounded">
+                 </div>
+               </div>
+             </div>
+             <div class="tab-pane text-center gallery" id="favorite">
+               <div class="row">
+                 <div class="col-md-3 ml-auto">
+                   <img src="{% static 'assets/img/examples/mariya-georgieva.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/studio-3.jpg' %}" class="rounded">
+                 </div>
+                 <div class="col-md-3 mr-auto">
+                   <img src="{% static 'assets/img/examples/clem-onojeghuo.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/olu-eletu.jpg' %}" class="rounded">
+                   <img src="{% static 'assets/img/examples/studio-1.jpg' %}" class="rounded">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+{% endblock %}

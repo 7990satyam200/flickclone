@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ board.name }}-{{block.super}}
+{% endblock %}
+
+
+{% block content %}
+{{sold.h_description}}
+
+<form class="form-inline md-form form-sm mt-0">
+
+  <input type="text" class="form-control form-control-sm ml-3 w-75" placeholder="Search For Selling Premium Harvest Crops" name="q" value="{{ query|escape }}">
+  <input class="btn btn-primary" type="submit" value="Search">
+</form>
+
+
+{% if query %}
+    <h2>Results for "{{ query|escape }}":</h2>
+    {% if results %}
+      <ul>
+      {% for i in results %}
+      <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{i.crop_image.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ i|escape }}</h5>
+        <p class="card-text">{{i.crop_description}}</p>
+        <p class="card-text"><small class="text-muted">{{i.crop_harvest_type}}</small></p>
+        <a  class="btn btn-primary" href = "{% url 'market' i.pk %}" >Sell {{i}} Crop Now</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+          <br>
+          {{ i.details|escape }}
+
+{% endfor %}
+      </ul>
+    {% else %}
+      <p>No Crops found</p>
+    {% endif %}
+  {% endif %}
+
+
+
+
+{% endblock %}

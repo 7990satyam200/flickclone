@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form-inline md-form form-sm mt-0">
+
+  <input type="text" class="form-control form-control-sm ml-3 w-75" placeholder="Search For Premium Harvest Crops" name="q" value="{{ query|escape }}">
+  <input class="btn btn-primary" type="submit" value="Search">
+</form>
+
+
+{% if query %}
+    <h2>Results for "{{ query|escape }}":</h2>
+    {% if results %}
+      <ul>
+      {% for i in results %}
+      <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{i.crop_image.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ i|escape }}</h5>
+        <p class="card-text">{{i.crop_description}}</p>
+        <p class="card-text"><small class="text-muted">{{i.crop_harvest_type}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+          <br>
+          {{ i.details|escape }}
+
+{% endfor %}
+      </ul>
+    {% else %}
+      <p>No Crops found</p>
+    {% endif %}
+  {% endif %}
+
+
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Sale your harvested Crop</h1>
+    <p class="lead">Sell your harvested crop to thousand of WholeSellers across India </p>
+  </div>
+</div>
+
+sss{{harvest_types}}
+
+<div class="container">
+ <div class="row">
+   {% for harvests in harvest_types %}
+
+   <div class="col"  style="min-width:350px; max-width: 30%">
+     <div class="card bg-dark text-white">
+       <img class="card-img-bottom" src="{{harvests.crop_type_image.url}}" alt="Card image cap">
+
+
+      <div class="card-body" >
+        <h4 class="card-title"><a href="{% url 'my_crop' harvests.pk %}">{{ harvests.crop_type }}</a></h4>
+           <p class="card-text" >{{ harvests.crop_type_description}}</p>
+           <a href="{% url 'my_crop' harvests.pk %}" class="btn btn-primary" "material-icons">Sale your {{ harvests.crop_type }} </a>
+     </div>
+   </div>
+ </div>
+{% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

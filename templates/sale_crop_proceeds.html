@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Sale your harvested Crop</h1>
+    <p class="lead">Sell your harvested crop to thousand of WholeSellers across India </p>
+  </div>
+</div>
+
+
+<div class="container">
+ <div class="row">
+   {% for harvests in object_list %}
+
+   <div class="col"  style="min-width:350px; max-width: 30%">
+     <div class="card bg-dark text-white">
+       <img class="card-img-bottom" src="{{harvests.crop_type_image.url}}" alt="Card image cap">
+
+
+      <div class="card-body" >
+        <h4 class="card-title"><a href="{% url 'my_crop' harvests.pk %}">{{ harvests.crop_type }}</a></h4>
+           <p class="card-text" >{{ harvests.crop_type_description}}</p>
+           <a href="{% url 'my_crop' harvests.pk %}" class="btn btn-primary" "material-icons">Sale your {{ harvests.crop_type }} </a>
+     </div>
+   </div>
+ </div>
+{% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{harvest.crop_type}}
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'sale_crop_proceeds' %}">Sell </a></li>
+  <li class="breadcrumb-item active"></li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Sell your {{harvest.crop_type}} to thousands of  WholeSellers</h1>
+      <p class="lead">{{harvest.crop_type_description}}</p>
+    </div>
+  </div>
+
+
+  <div class="container">
+   <div class="row">
+  {% for i in harvest.crops.all %}
+  <div class="col"  style="min-width:350px; max-width: 30%">
+
+  <div class="card border-success mb-3 text-center" style="max-width: 50rem;">
+    <img class="card-img-top" src="{{i.crop_image.url}}" alt="Card image cap">
+
+  <div class="card-body ">
+    <h4 class="card-title">
+
+  <a href=""></a>
+</h4>
+
+    <p class="card-text">{{i.crop_name}}</p>
+    <a href="{% url 'sellCrop' harvest.pk i.pk %}" class="btn btn-primary"> Sell Your {{i.crop_name}} Crop</a>
+    <div class="card-footer bg-transparent border-success"></div>
+    <h6 class="card-subtitle mb-2 text-muted">{{i.crop_description}}</h6>
+
+    <h6 class="card-subtitle mb-2 text-muted"></h6>
+
+  </div>
+
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+</div>
+  {% endblock %}

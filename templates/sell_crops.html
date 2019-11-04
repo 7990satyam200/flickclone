@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Sell Your Harvest Crop to thousands of wholesalers in India {% endblock %}
+
+
+
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Sell {{crop.crop_name}} crop to thousands of wholesalers in India</h1>
+    <p class="lead">{{crop.crop_description}}</p>
+  </div>
+</div>
+
+
+  <form  action="" method="post" enctype="multipart/form-data class="mb-4">
+    {% csrf_token %}
+    {% include 'includes/form.html' %}
+    <button type="submit" class="btn btn-success"> SUBMIT</button>
+  </form>
+
+
+
+{% endblock %}
